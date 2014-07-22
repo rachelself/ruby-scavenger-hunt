@@ -12,11 +12,22 @@ class My_Vector < Vector
     path_length
   end
 
+  def self.calculate_angle(v1, v2)
+    # x = (v1[0]*v1[1] + v2[0]*v2[1]) / Math.sqrt((v1[1]**2 + v2[1]**2)) * Math.sqrt((v1[0]**2 + v2[0]**2))
+    # Math.acos(x)
+    v1.calculate_angle(v2)
+  end
+
+  def calculate_angle(v)
+    x = (v[0]*v[1] + self[0]*self[1]) / Math.sqrt((v[1]**2 + self[1]**2)) * Math.sqrt((v[0]**2 + self[0]**2))
+    Math.acos(x)
+  end
+
   def distance(v2)
     Math.sqrt((v2[0] - self[0])**2 + (v2[1] - self[1])**2)
   end
 
   def <<(n)
-    self << n
+    My_Vector.elements(self.to_a << n)
   end
 end
